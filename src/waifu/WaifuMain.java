@@ -51,6 +51,10 @@ public class WaifuMain {
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			
 			for (int i = 0; i < 4; i++){
+				String song1 = "/image/LiSA_-_Rising_Hope_mp3cut_net_.wav";
+				InputStream in = new FileInputStream(song1);
+				AudioStream audioStream = new AudioStream(in);
+				AudioPlayer.player.start(audioStream);
 				frame = new JFrame("Don't leave me daddy-chan!");
 				URL url = WaifuMain.class.getResource("/image/sadcap.gif");
 				frame.add(new JLabel(new ImageIcon(url)));
@@ -59,6 +63,9 @@ public class WaifuMain {
 				frame.pack();
 				frame.setVisible(true);
 				
+				String song2 = "/image/Attack_on_Titan_-_Official_Opening_-_Feuerroter_Pf.wav";
+				AudioStream audioStream = new AudioStream(in);
+				AudioPlayer.player.start(audioStream);
 				frame = new JFrame("How dare you break the waifu-code! Have some decency!");
 				url = WaifuMain.class.getResource("/image/angrycap.gif");
 				frame.add(new JLabel(new ImageIcon(url)));
