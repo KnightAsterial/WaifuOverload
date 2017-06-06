@@ -51,7 +51,10 @@ public class WaifuMain {
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			
 			for (int i = 0; i < 4; i++){
-				String song1 = "/Users/al/DevDaily/Projects/MeditationApp/resources/gong.au";
+				String song1 = "/image/LiSA_-_Rising_Hope_mp3cut_net_.wav";
+				InputStream in = new FileInputStream(song1);
+				AudioStream audioStream = new AudioStream(in);
+				AudioPlayer.player.start(audioStream);
 				frame = new JFrame("Don't leave me daddy-chan!");
 				URL url = WaifuMain.class.getResource("/image/sadcap.gif");
 				frame.add(new JLabel(new ImageIcon(url)));
