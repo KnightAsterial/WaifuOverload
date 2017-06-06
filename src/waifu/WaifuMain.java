@@ -51,6 +51,7 @@ public class WaifuMain {
 			Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 			
 			for (int i = 0; i < 4; i++){
+				String song1 = "/Users/al/DevDaily/Projects/MeditationApp/resources/gong.au";
 				frame = new JFrame("Don't leave me daddy-chan!");
 				URL url = WaifuMain.class.getResource("/image/sadcap.gif");
 				frame.add(new JLabel(new ImageIcon(url)));
