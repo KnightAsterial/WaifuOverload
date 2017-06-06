@@ -58,7 +58,7 @@ public class WaifuMain {
 				
 				try{
 					Clip clip = AudioSystem.getClip();
-					AudioInputStream inputStream = AudioSystem.getAudioInputStream(WaifuMain.class.getResourceAsStream(song1));
+					AudioInputStream inputStream = AudioSystem.getAudioInputStream(WaifuMain.class.getResource(song1));
 					clip.open(inputStream);
 					clip.start();
 				}
@@ -78,7 +78,7 @@ public class WaifuMain {
 
 				try{
 					Clip clip = AudioSystem.getClip();
-					AudioInputStream inputStream = AudioSystem.getAudioInputStream(WaifuMain.class.getResourceAsStream(song2));
+					AudioInputStream inputStream = AudioSystem.getAudioInputStream(WaifuMain.class.getResource(song2));
 					clip.open(inputStream);
 					clip.start();
 				}
